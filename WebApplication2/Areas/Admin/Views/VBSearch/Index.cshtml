@@ -1,0 +1,171 @@
+﻿@model IEnumerable<Models.EF.VANBAN>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 style="font-family:'Times New Roman', Times, serif">Tra cứu văn bản</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                        <li class="breadcrumb-item active">Tra cứu</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body" style="padding-left:150px;">
+
+                            @using (Html.BeginForm("Index", "VBSearch", FormMethod.Get))
+                            {
+                                <div class="form-inline">
+                                    <div class="form-group">
+                                        <div><b>Số văn bản:</b> @Html.TextBox("searchstring")</div>
+                                        <style>
+                                            select {
+                                                width: 162px !important;
+                                            }
+                                        </style>
+
+                                        <div style="padding-left:92px">
+                                            <b>Nơi phát hành:</b> @Html.DropDownList("noiphathanhID", "Tất cả")
+                                        </div>
+                                        <div style="padding-left:92px">
+                                            <b>Loại văn bản:</b>  @Html.DropDownList("loaivanbanID", "Tất cả")
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-inline">
+                                    <div class="form-group">
+                                        <div style="padding-left:12px;padding-top:15px">
+                                            <b>Trích yếu:</b> @Html.TextBox("searchby")
+                                        </div>
+                                        <div style="padding-top:15px;padding-left:137px">
+                                            <b>Ngày ký:</b><input type="date" width="20" name="searchto" />
+                                           
+                                        </div>
+                                        <div style="padding-top:15px;padding-left:116px">
+                                            <b>Đến ngày:</b>
+                                            <input type="date" name="searchfr" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <input style="float:right" class="btn- btn-success" type="submit" value="Tìm kiếm" />
+
+
+
+                            }
+                        </div>
+
+                        <table id="example2" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="110px">
+                                        Loại văn bản
+                                    </th>
+
+                                    <th width="130px">
+                                        Nơi phát hành
+                                    </th>
+                                    <th width="100px">
+                                        Số văn bản
+                                    </th>
+                                    <th width="100px">
+                                        Trích yếu
+                                    </th>
+                                    <th width="100px">
+                                        Người ký
+                                    </th>
+                                    <th width="80px">
+                                        Ngày ký
+                                    </th>
+                                    
+                                    <th width="80px">
+                                        Ngày gởi
+                                    </th>
+                                    <th width="100px">
+                                        Ngày nhận
+                                    </th>
+                                    <th width="100px">
+                                        Hành động
+                                    </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.LOAIVANBAN.TEN_LOAI_VAN_BAN)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.NOI_PHAT_HANH.TEN_NOI_PHAT_HANH)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.SO_VAN_BAN)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TRICH_YEU)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.NGUOI_KY)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.NGAY_KY)
+                                        </td>
+                                        
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.NGAY_GOI)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.NGAY_NHAN)
+                                        </td>
+
+                                        <td>
+
+                                            @Html.ActionLink("Chi tiết", "ViewDetails", new { id = item.ID_VAN_BAN }, new
+                                       {
+                                           @class = "btn btn-outline-warning"
+                                       })
+
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+

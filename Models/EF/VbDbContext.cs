@@ -8,7 +8,7 @@ namespace Models.EF
     public partial class VBDbContext : DbContext
     {
         public VBDbContext()
-            : base("name=VbDbContext")
+            : base("name=VBDbContext")
         {
         }
 
@@ -23,10 +23,12 @@ namespace Models.EF
         public virtual DbSet<LINHVUC> LINHVUCs { get; set; }
         public virtual DbSet<LOAIVANBAN> LOAIVANBANs { get; set; }
         public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
+        public virtual DbSet<NHANVIENBUTPHE> NHANVIENBUTPHEs { get; set; }
         public virtual DbSet<NOI_PHAT_HANH> NOI_PHAT_HANH { get; set; }
         public virtual DbSet<TRANGTHAICONGVIEC> TRANGTHAICONGVIECs { get; set; }
         public virtual DbSet<VAITRO> VAITROes { get; set; }
         public virtual DbSet<VANBAN> VANBANs { get; set; }
+        public virtual DbSet<VANBAN_NHANVIEN> VANBAN_NHANVIEN { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -40,7 +42,12 @@ namespace Models.EF
 
             modelBuilder.Entity<BUTPHE>()
                 .Property(e => e.NOI_DUNG_BUT_PHE)
-                .IsUnicode(false);
+                .IsUnicode(true);
+
+            modelBuilder.Entity<BUTPHE>()
+                .HasMany(e => e.NHANVIENBUTPHEs)
+                .WithRequired(e => e.BUTPHE)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<CHI_TIET_GIAO_VIEC>()
                 .Property(e => e.ID_CHI_TIET)
@@ -210,11 +217,6 @@ namespace Models.EF
                 .Property(e => e.TEN_LOAI_VAN_BAN)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LOAIVANBAN>()
-                .HasMany(e => e.VANBANs)
-                .WithRequired(e => e.LOAIVANBAN)
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<NHANVIEN>()
                 .Property(e => e.ID_NHAN_VIEN)
                 .HasPrecision(18, 0);
@@ -262,23 +264,25 @@ namespace Models.EF
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<NHANVIEN>()
-                .HasMany(e => e.VANBANs)
+                .HasMany(e => e.NHANVIENBUTPHEs)
                 .WithRequired(e => e.NHANVIEN)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<NHANVIEN>()
-                .HasMany(e => e.BUTPHEs)
-                .WithMany(e => e.NHANVIENs)
-                .Map(m => m.ToTable("NHANVIENBUTPHE").MapLeftKey("ID_NHAN_VIEN").MapRightKey("ID_BUT_PHE"));
+            modelBuilder.Entity<NHANVIENBUTPHE>()
+                .Property(e => e.ID_NHAN_VIEN)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<NHANVIENBUTPHE>()
+                .Property(e => e.ID_BUT_PHE)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<NHANVIENBUTPHE>()
+                .Property(e => e.chitietbp)
+                .IsUnicode(false);
 
             modelBuilder.Entity<NOI_PHAT_HANH>()
                 .Property(e => e.ID_NOI_PHAT_HANH)
                 .HasPrecision(18, 0);
-
-            modelBuilder.Entity<NOI_PHAT_HANH>()
-                .Property(e => e.TEN_NOI_PHAT_HANH)
-                .IsFixedLength()
-                .IsUnicode(false);
 
             modelBuilder.Entity<NOI_PHAT_HANH>()
                 .HasMany(e => e.VANBANs)
@@ -320,10 +324,6 @@ namespace Models.EF
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<VANBAN>()
-                .Property(e => e.ID_NHAN_VIEN)
-                .HasPrecision(18, 0);
-
-            modelBuilder.Entity<VANBAN>()
                 .Property(e => e.ID_LOAI_VAN_BAN)
                 .HasPrecision(18, 0);
 
@@ -333,15 +333,19 @@ namespace Models.EF
 
             modelBuilder.Entity<VANBAN>()
                 .Property(e => e.TRICH_YEU)
-                .IsUnicode(false);
+                .IsUnicode(true);
 
             modelBuilder.Entity<VANBAN>()
                 .Property(e => e.NGUOI_KY)
                 .IsFixedLength()
-                .IsUnicode(false);
+                .IsUnicode(true);
 
             modelBuilder.Entity<VANBAN>()
                 .Property(e => e.TRANG_THAI_XU_LY)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<VANBAN>()
+                .Property(e => e.FILE_DINH_KEM)
                 .IsUnicode(false);
 
             modelBuilder.Entity<VANBAN>()
@@ -349,10 +353,17 @@ namespace Models.EF
                 .WithRequired(e => e.VANBAN)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<VANBAN>()
-                .HasMany(e => e.FILEDINHKEMs)
-                .WithRequired(e => e.VANBAN)
-                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<VANBAN_NHANVIEN>()
+                .Property(e => e.VANBAN_NHANVIEN_Id)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<VANBAN_NHANVIEN>()
+                .Property(e => e.ID_VAN_BAN)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<VANBAN_NHANVIEN>()
+                .Property(e => e.ID_NHAN_VIEN)
+                .HasPrecision(18, 0);
         }
     }
 }

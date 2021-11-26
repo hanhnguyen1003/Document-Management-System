@@ -1,0 +1,143 @@
+﻿@model Models.EF.BUTPHE
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Xử lý văn bản</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">DataTables</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                                    <div class="form-inline" style="padding-left:43px;padding-top:10px">
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div clas="col-md-6">
+                                                    @Html.LabelFor(model => model.ID_BUT_PHE, htmlAttributes: new { @class = "control-label col-md-12" })
+                                                </div>
+                                                <div>
+                                                    @Html.TextBoxFor(model => model.ID_BUT_PHE, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.ID_BUT_PHE, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-md-6" style="padding-left:35px">
+                                            <div class="form-group">
+                                                <div clas="col-md-6">
+                                                    @Html.LabelFor(model => model.ID_VAN_BAN, "Số Văn Bản:", htmlAttributes: new { @class = "control-label col-md-12" })
+                                                </div>
+
+                                                @Html.DropDownListFor(model => model.ID_VAN_BAN, null, htmlAttributes: new { @class = "form-control", @style = "width:190px" })
+                                                @Html.ValidationMessageFor(model => model.ID_VAN_BAN, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-inline" style="padding-top:15px">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div clas="col-md-6">
+                                                    @Html.LabelFor(model => model.THOI_GIAN_BD, htmlAttributes: new {
+                                                    @class = "control-label col-md-12" })
+                                                </div>
+                                                <div>
+                                                    @Html.EditorFor(model => model.THOI_GIAN_BD, new { htmlAttributes = new {
+                                                   @class = "datepicker",
+                                                   @readonly = "true",
+                                                   @placeholder = "dd/mm/yyyy"
+                                               } })
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div clas="col-md-6">
+                                                    @Html.LabelFor(model => model.THOI_GIAN_KT, htmlAttributes: new {
+                                                    @class = "control-label col-md-12" })
+                                                </div>
+                                                <div>
+                                                    @Html.EditorFor(model => model.THOI_GIAN_KT, new { htmlAttributes = new {
+                                                   @class = "datepickerday",
+                                                   @readonly = "true",
+                                                   @placeholder = "dd/mm/yyyy"
+                                               } })
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-inline" style="padding-left:9px;padding-top:15px">
+                                        <div class="form-group">
+                                            <div clas="col-md-6">
+                                                @Html.LabelFor(model => model.NOI_DUNG_BUT_PHE, htmlAttributes: new { @class = "control-label col-md-12" })
+                                            </div>
+                                            <div>
+                                                @Html.TextAreaFor(model => model.NOI_DUNG_BUT_PHE, new { htmlAttributes = new { @class = "form-control" }, cols = "91", rows = "4" })
+                                                @Html.ValidationMessageFor(model => model.NOI_DUNG_BUT_PHE, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                     </div>
+
+                                            <div class="form-group" style="float:right;padding-right:20px;padding-top:15px">
+                                                <div class="col-md-offset-2 col-md-10">
+                                                    <input type="submit" value="Lưu" class="btn btn-success" />
+                                                </div>
+                                            </div>
+
+                                            }
+
+
+                                        </div>
+                                    </div>
+        </div>
+    </section>
+    </div>
+
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    @section Scripts{
+
+        <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+        <script>
+        $(function () {
+            $(".datepicker").datepicker();
+            $(".datepickerday").datepicker();
+          
+        });
+        </script>
+
+
+
+    }

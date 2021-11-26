@@ -1,0 +1,109 @@
+﻿@model IEnumerable<Models.EF.VANBAN>
+
+@{
+    ViewBag.Title = "FindVanBan";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>FindVanBan</title>
+</head>
+<body>
+    
+        @Html.ActionLink("Create New", "Create")
+        @using (Html.BeginForm("FindVanBan","VanBan",FormMethod.Get))
+        {
+            <p>
+                Tittle: @Html.TextBox("seachString") <input type="button" value="tim kiem"/>
+            </p>
+        }
+   
+    
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LOAIVANBAN.MA_LOAI_VAN_BAN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NHANVIEN.MA_NHAN_VIEN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NOI_PHAT_HANH.TEN_NOI_PHAT_HANH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SO_VAN_BAN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TRICH_YEU)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NGUOI_KY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NGAY_KY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TRANG_THAI_XU_LY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NGAY_GOI)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NGAY_NHAN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FILE_DINH_KEM)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LOAIVANBAN.MA_LOAI_VAN_BAN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NHANVIEN.MA_NHAN_VIEN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NOI_PHAT_HANH.TEN_NOI_PHAT_HANH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SO_VAN_BAN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TRICH_YEU)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGUOI_KY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGAY_KY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TRANG_THAI_XU_LY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGAY_GOI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGAY_NHAN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FILE_DINH_KEM)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID_VAN_BAN }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID_VAN_BAN }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID_VAN_BAN })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

@@ -12,9 +12,9 @@ namespace Models.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public BUTPHE()
         {
-            NHANVIENs = new HashSet<NHANVIEN>();
+            NHANVIENBUTPHEs = new HashSet<NHANVIENBUTPHE>();
         }
-
+        
         [Key]
         public decimal ID_BUT_PHE { get; set; }
 
@@ -30,6 +30,6 @@ namespace Models.EF
         public virtual VANBAN VANBAN { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NHANVIEN> NHANVIENs { get; set; }
+        public virtual ICollection<NHANVIENBUTPHE> NHANVIENBUTPHEs { get; set; }
     }
 }

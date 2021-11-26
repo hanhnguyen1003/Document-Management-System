@@ -37,7 +37,5 @@ namespace Models.EF
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CONGVIEC> CONGVIECs { get; set; }
-
-        public virtual VANBAN VANBAN { get; set; }
     }
 }

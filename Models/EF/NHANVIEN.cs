@@ -14,8 +14,8 @@ namespace Models.EF
         {
             CHI_TIET_GIAO_VIEC = new HashSet<CHI_TIET_GIAO_VIEC>();
             CONGVIECs = new HashSet<CONGVIEC>();
-            VANBANs = new HashSet<VANBAN>();
-            BUTPHEs = new HashSet<BUTPHE>();
+            VANBAN_NHANVIEN = new HashSet<VANBAN_NHANVIEN>();
+            NHANVIENBUTPHEs = new HashSet<NHANVIENBUTPHE>();
             LICHLAMVIECs = new HashSet<LICHLAMVIEC>();
         }
 
@@ -59,13 +59,13 @@ namespace Models.EF
 
         public virtual DONVI DONVI { get; set; }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VANBAN_NHANVIEN> VANBAN_NHANVIEN { get; set; }
+
         public virtual VAITRO VAITRO { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VANBAN> VANBANs { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BUTPHE> BUTPHEs { get; set; }
+        public virtual ICollection<NHANVIENBUTPHE> NHANVIENBUTPHEs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LICHLAMVIEC> LICHLAMVIECs { get; set; }

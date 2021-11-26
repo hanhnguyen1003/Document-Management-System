@@ -1,7 +1,8 @@
-namespace Models.EF
+﻿namespace Models.EF
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -15,10 +16,11 @@ namespace Models.EF
         }
 
         [Key]
+        [DisplayName("Nơi phát hành:")]
         public decimal ID_NOI_PHAT_HANH { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [StringLength(100)]
+        [DisplayName("Nơi phát hành:")]
         public string TEN_NOI_PHAT_HANH { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

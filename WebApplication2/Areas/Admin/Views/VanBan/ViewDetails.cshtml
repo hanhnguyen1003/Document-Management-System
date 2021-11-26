@@ -1,0 +1,529 @@
+﻿@model  Models.EF.VANBAN
+
+@{
+    ViewBag.Title = "ViewDetails";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link href="~/Assets/admin/plugins/jquery/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Assets/admin/plugins/jquery/jquery.datetimepicker.min.css" rel="stylesheet" />
+    <link href="~/Assets/admin/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css" rel="stylesheet" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 style="font-family:'Times New Roman', Times, serif">Chi tiết văn bản</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                        <li class="breadcrumb-item active">Chi tiết</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <input class="idVanBan" id="idVanBan" type="hidden" value="@Model.ID_VAN_BAN" />
+                        <div class="form-inline" style="padding-top:10px">
+                            <div class="col-md-6" style="padding-top:10px">
+                                <div class="form-group">
+                                    <div clas="col-md-6" style="padding-left:15px">
+                                        <b>@Html.DisplayNameFor(model => model.LOAIVANBAN.MA_LOAI_VAN_BAN)</b>
+                                    </div>
+                                    <div style="padding-left:5px">
+                                        @Html.DisplayFor(model => model.LOAIVANBAN.TEN_LOAI_VAN_BAN)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div clas="col-md-6" style="padding-left:15px;padding-top:10px">
+                                        <b>@Html.DisplayNameFor(model => model.NOI_PHAT_HANH.TEN_NOI_PHAT_HANH)</b>
+                                    </div>
+                                    <div style="padding-left:5px;padding-top:10px">
+
+                                        @Html.DisplayFor(model => model.NOI_PHAT_HANH.TEN_NOI_PHAT_HANH)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div clas="col-md-6" style="padding-left:15px;padding-top:10px">
+                                        <b>@Html.DisplayNameFor(model => model.SO_VAN_BAN)</b>
+                                    </div>
+                                    <div style="padding-left:5px;padding-top:10px">
+
+                                        @Html.DisplayFor(model => model.SO_VAN_BAN)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div clas="col-md-6" style="padding-left:15px;padding-top:10px">
+                                        <b>@Html.DisplayNameFor(model => model.TRICH_YEU)</b>
+                                    </div>
+                                    <div style="padding-left:5px;padding-top:10px">
+
+                                        @Html.DisplayFor(model => model.TRICH_YEU)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div clas="col-md-6" style="padding-left:15px;padding-top:10px">
+                                        <b>@Html.DisplayNameFor(model => model.NGUOI_KY)</b>
+                                    </div>
+                                    <div style="padding-left:5px;padding-top:10px">
+
+                                        @Html.DisplayFor(model => model.NGUOI_KY)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div clas="col-md-6" style="padding-left:15px;padding-top:10px">
+                                        <b>@Html.DisplayNameFor(model => model.NGAY_KY)</b>
+                                    </div>
+                                    <div style="padding-left:5px;padding-top:10px">
+
+                                        @Html.DisplayFor(model => model.NGAY_KY)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div clas="col-md-6" style="padding-left:15px;padding-top:10px">
+                                        <b>@Html.DisplayNameFor(model => model.TRANG_THAI_XU_LY)</b>
+                                    </div>
+                                    <div style="padding-left:5px;padding-top:10px">
+                                        <label id="trangthaixuly">@(Model.TRANG_THAI_XU_LY == "0" ? "Chưa xử lý" : Model.TRANG_THAI_XU_LY == "1" ? "Đang xử lý" : "Đã xử lý")</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div clas="col-md-6" style="padding-left:15px;padding-top:10px">
+                                        <b>@Html.DisplayNameFor(model => model.NGAY_GOI)</b>
+                                    </div>
+                                    <div style="padding-left:5px;padding-top:10px">
+
+                                        @Html.DisplayFor(model => model.NGAY_GOI)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div clas="col-md-6" style="padding-left:15px;padding-top:10px">
+                                        <b>File đính kèm</b>
+                                    </div>
+                                    <div style="padding-left:5px;padding-top:10px">
+                                        @if (Model.FILE_DINH_KEM!="")
+                                            { 
+                                            string[] s = Model.FILE_DINH_KEM.Split(',');
+                                            foreach (var item in s)
+                                            {
+                                                <a href=@($"/UploadFileTest/{item}")>@item</a><br />
+                                            }
+                                        }
+                                        @*<a href="@Model.FILE_DINH_KEM">@Model.FILE_DINH_KEM</a>*@
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div clas="col-md-6" style="padding-left:15px;padding-bottom:15px">
+                                        <b>@Html.DisplayNameFor(model => model.NGAY_NHAN)</b>
+                                    </div>
+                                    <div style="padding-left:5px;padding-bottom:15px">
+
+                                        @Html.DisplayFor(model => model.NGAY_NHAN)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div clas="col-md-6" style="padding-left:15px;padding-top:10px">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                            Xử lý văn bản
+                                        </button>
+                                        <button type="button" id="stat" class="btn btn-warning" onclick="thayDoiTrangThaiVanBan()">Đã xem</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="padding-left:15px;padding-top:10px">
+                                <div class="container">
+
+                                    <!-- Button to Open the Modal -->
+                                    <!-- The Modal -->
+                                    <div class="modal" id="myModal">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+
+                                                <!-- Modal Header -->
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Xử lý văn bản</h4>
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                </div>
+
+
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    <!-- textarea -->
+
+                                                    <div class="form-group" style="padding-left:105px">
+                                                        <input type="hidden" value="@ViewBag.idvanban" id="idvanban" />
+                                                        <label>Mã bút phê:</label>
+                                                        <input type="text" class="form-control" id="idbutphe">
+                                                    </div>
+                                                    <div class="form-group" style="padding-top:10px;padding-left:58px">
+                                                        <label>Nội dung bút phê:</label>
+                                                        <textarea class="form-control" cols="57" rows="3" id="noidungbutphe"></textarea>
+                                                    </div>
+                                                    <div class="form-group" style="padding-top:10px;padding-left:58px">
+                                                        <label>Thời gian bắt đầu:</label>
+                                                        <input type="text" autocomplete="off" class="form-control" id="start" />
+                                                    </div>
+
+                                                    <div class="form-group" style="padding-top:10px;padding-left:54px">
+                                                        <label>Thời gian kết thúc:</label>
+                                                        <input type="text" autocomplete="off" class="form-control" id="end" />
+                                                    </div>
+                                                    <div class="form-group" style="padding-top:10px;padding-left:72px">
+                                                        <label>Trạng thái xử lý:</label>
+                                                        <select id="trangthaibutphe" style="width:210px;height:35px">
+                                                            <option value="0" @(Model.TRANG_THAI_XU_LY == "0" ? "selected" : "")>Chưa xử lý</option>
+                                                            <option value="1" @(Model.TRANG_THAI_XU_LY == "1" ? "selected" : "")>Đang xử lý</option>
+                                                            <option value="2" @(Model.TRANG_THAI_XU_LY == "2" ? "selected" : "")>Đã xử lý</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-inline">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group" style="padding-bottom:10px;padding-top:15px;padding-left:87px">
+                                                                <div class="form-inline">
+                                                                    <div class="form-group">
+                                                                        <div clas="col-md-6">
+                                                                            <label>Thành phần:</label>
+                                                                        </div>
+                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input" type="radio" checked name="radio1" onclick="hideDonVi()">
+                                                                            <label class="form-check-label">Cá nhân</label>
+                                                                        </div>
+                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                                                        <div class="form-check" style="padding-right:70px">
+                                                                            <input class="form-check-input" type="radio" name="radio1" onclick="showDonVi()">
+                                                                            <label class="form-check-label">Đơn vị</label>
+                                                                        </div>
+                                                                        <label>Danh sách nhận:</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class=" form-inline d-none" style="width:100%" id="formdonvi">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group" style="padding-top:5px;padding-left:180px">
+                                                                <select id="dsdonvi" onchange="getNhanVienByDonVi(this)">
+                                                                    @foreach (var item in ViewBag.DonVis)
+                                                                    {
+                                                                        <option value="@item.ID_DON_VI">@item.TEN_DON_VI</option>
+                                                                    }
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group" style="padding-top:10px;">
+                                                        <label>Nhân viên xử lý tiếp theo:</label>
+                                                        <table>
+                                                            <tr style="border:0;">
+                                                                <td style="border:0; vertical-align:top;text-align:left;height: 100%;">
+                                                                    <select multiple="multiple" id="idnhanvien" size="10" style="width:200px; height:180px"></select>
+                                                                </td>
+
+                                                                <td style="border:0; vertical-align:middle;text-align:center;padding-left:10px">
+
+                                                                    <input class="btn-click btn btn-dark" type="button" id="rightall" value=">>" style="width:40px;" /><br />
+                                                                    <input class="btn-click btn btn-dark" type="button" id="right" value=">" style="width:40px" /><br />
+                                                                    <input class="btn-click btn btn-dark" type="button" id="left" value="<" style="width:40px" /><br />
+                                                                    <input class="btn-click btn btn-dark" type="button" id="leftall" value="<<" style="width:40px" />
+
+                                                                </td>
+                                                                <td style="border:0; vertical-align:top;text-align:left;padding-left:10px;width:200px; height:120px">
+                                                                    <select multiple="multiple" id="nv" size="10" style="width:200px; height:180px"></select>
+                                                                </td>
+
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                    <!-- Modal footer -->
+
+                                                    <div class="modal-footer" style="padding-left:600px">
+                                                        <button type="button" class="btn btn-success" data-dismiss="modal" id="save">Lưu</button>
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="card-body table-responsive" style="padding-right:200px">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Mã bút phê</th>
+                                                <th>Nội dung bút phê</th>
+                                                <th>Thời gian bắt đầu</th>
+                                                <th>Thời gian kết thúc</th>
+                                                <th>Người xử lý tiếp theo</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model.BUTPHEs)
+                                            {
+                                                <tr class="bf">
+                                                    <td>@item.ID_BUT_PHE</td>
+                                                    <td>@item.NOI_DUNG_BUT_PHE</td>
+                                                    <td>@item.THOI_GIAN_BD</td>
+                                                    <td>@item.THOI_GIAN_KT</td>
+                                                </tr>
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+
+                            @Html.ActionLink("Back to List", "Index", "ViewDetails", new { id = Model.ID_VAN_BAN })
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+</div>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+@section Scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="~/Assets/admin/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script>
+        //Hiện danh sách đơn vị
+        var showDonVi = () => {
+            document.getElementById('formdonvi').classList.remove('d-none');
+        }
+        //ẩn danh sách đơn vị và hiện toàn bộ nhân viên
+        var hideDonVi = () => {
+            document.getElementById('formdonvi').classList.add('d-none');
+            $.get('/Admin/VanBan/GetNhanVien', (d) => {
+                console.log(d);
+                let str = '';
+                for (var i = 0; i < d.length; i++) {
+                    str += `<option value="${d[i].ID_NHAN_VIEN}">${d[i].HO_TEN}</option>`
+                }
+                idnhanvien.innerHTML = str;
+            })
+            //idnhanvien
+        }
+        var getNhanVienByDonVi = (e) => {
+            console.log(e.value);
+            $.post('/Admin/VanBan/GetNhanVienByDonVi', { id: e.value }, (d) => {
+                console.log(d);
+                let str = '';
+                for (var i = 0; i < d.length; i++) {
+                    str += `<option value="${d[i].ID_NHAN_VIEN}">${d[i].HO_TEN}</option>`
+                }
+                idnhanvien.innerHTML = str;
+            })
+        }
+
+
+
+
+
+        $(document).ready(() => {
+            $.get('/Admin/VanBan/getnhanvien', function (d) {
+                console.log(d);
+                let str = "";
+                for (var i = 0; i < d.length; i++) {
+                    str += `<option value="${d[i].ID_NHAN_VIEN}">${d[i].HO_TEN}</option>`
+                }
+                document.getElementById("idnhanvien").innerHTML = str;
+            })
+            function AddButPhe() {
+                let obj = {
+                    ID_BUT_PHE: idbutphe.value,
+                    ID_VAN_BAN: idvanban.value,
+                    NOI_DUNG_BUT_PHE: noidungbutphe.value,
+                    THOI_GIAN_BD: start.value,
+                    THOI_GIAN_KT: end.value                 
+                }
+                $.post('/Admin/vanban/addbutphe', { obj: obj, trangthai:trangthaibutphe.value }, (d) => {
+                    console.log(d);
+                    if (d != 0) {
+                        let nv = document.getElementById("nv");
+                        console.log(nv);
+                        let op = nv.getElementsByTagName("option");
+                        console.log(op);
+                        let objs = []
+                        for (var i = 0; i < op.length; i++) {
+                            let obj = {
+                                ID_BUT_PHE: idbutphe.value,
+                                ID_NHAN_VIEN: parseInt(op[i].value)
+                            }
+                            objs.push(obj);
+                        }
+                        console.log({ objs });
+                        $.post('/admin/vanban/addnhanvien', { objs: objs }, (d) => {
+                            console.log({ d });
+                            if (d[0] == 1) {
+                                alert("Nhập nhân viên thành công");
+                                window.location.reload();
+                            } else {
+                                alert("Nhập nhân viên thất bại");
+                            }
+                        })
+                        alert("Nhập bút phê thành công.")
+                    } else {
+                        alert("Nhập bút phê thất bại")
+                    }
+                })
+            }
+            save.onclick = () => {
+                AddButPhe();
+            }
+            let bf = document.getElementsByClassName('bf');
+            for (var i = 0; i < bf.length; i++) {
+                let id = bf[i].cells[0].innerText;
+                $.ajax({
+                    'async': false,
+                    'type': 'POST',
+                    'globlal': false,
+                    'dataTye': 'json',
+                    'url': '/Admin/vanban/GetNhanVienByIdButPhe',
+                    'data': { id: id },
+                    'success': function (d) {
+                        $(bf[i]).append(`<td>${d}</td>`);
+                    }
+                })
+            }
+        })
+
+        var thayDoiTrangThaiVanBan = () => {
+            //let trangthai =document.getElementById('idtrangthai');
+            let idvanban = document.getElementById('idVanBan').value;
+            $.post('/Admin/VanBan/ThayDoiTrangThaiVanBan', { idvanban: parseFloat(idvanban), trangthai: "1" }, (d) => {
+                console.log(d)
+                if (d == 1) {
+                    trangthaixuly.innerText = "Đang xử lý"
+                }
+            });
+        }
+
+
+
+
+
+       
+        $(function () {
+            function moveItems(origin, dest) {
+                $(origin).find(':selected').appendTo(dest);
+            }
+
+            function moveAllItems(origin, dest) {
+                $(origin).children().appendTo(dest);
+            }
+
+            $('#left').click(function () {
+                moveItems('#nv', '#idnhanvien');
+            });
+
+            $('#right').on('click', function () {
+                moveItems('#idnhanvien', '#nv');
+            });
+
+            $('#leftall').on('click', function () {
+                moveAllItems('#nv', '#idnhanvien');
+            });
+
+            $('#rightall').on('click', function () {
+                moveAllItems('#idnhanvien', '#nv');
+            });
+        });
+    </script>
+
+    <script>
+        $(function () {
+            function moveItems(origin, dest) {
+                $(origin).find(':selected').appendTo(dest);
+            }
+
+            function moveAllItems(origin, dest) {
+                $(origin).children().appendTo(dest);
+            }
+
+            $('#left1').click(function () {
+                moveItems('#dv', '#iddv');
+            });
+
+            $('#right1').on('click', function () {
+                moveItems('#iddv', '#dv');
+            });
+
+            $('#leftall1').on('click', function () {
+                moveAllItems('#dv', '#iddv');
+            });
+
+            $('#rightall1').on('click', function () {
+                moveAllItems('#iddv', '#dv');
+            });
+        });
+    </script>
+    <script src="~/Assets/admin/plugins/jquery/jquery-1.10.2.min.js"></script>
+    <script src="~/Assets/admin/plugins/jquery/jquery.datetimepicker.full.js"></script>
+    <script>
+
+        var j1 = jQuery.noConflict();
+        var timeArray = ['00:00', '00:30', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30', '04:00', '04:30', '05:00', '05:30', '06:00', '06:30', '07:00', '07:30', '08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00', '21:30', '22:00', '22:30', '23:00', '23:30', '23:59']
+        j1.datetimepicker.setLocale('vi');
+
+        j1("#start").datetimepicker({
+            defaultDate: Date.now(),
+            allowTimes: timeArray
+        });
+        j1("#end").datetimepicker({
+            defaultDate: Date.now(),
+            allowTimes: timeArray
+        });
+    </script>
+}

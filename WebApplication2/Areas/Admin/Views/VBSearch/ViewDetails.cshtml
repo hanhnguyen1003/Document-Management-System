@@ -1,0 +1,148 @@
+﻿@model Models.EF.VANBAN
+
+@{
+    ViewBag.Title = "ViewDetails";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Chi tiết văn bản</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                        <li class="breadcrumb-item active">Chi tiết</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="form-inline" style="padding-top:10px">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div clas="col-md-6" style="padding-left:15px">
+                                        <b>@Html.DisplayNameFor(model => model.LOAIVANBAN.MA_LOAI_VAN_BAN)</b>
+                                    </div>
+                                    <div style="padding-left:5px">
+                                        @Html.DisplayFor(model => model.LOAIVANBAN.TEN_LOAI_VAN_BAN)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div clas="col-md-6" style="padding-left:15px;padding-top:10px">
+                                        <b>@Html.DisplayNameFor(model => model.NOI_PHAT_HANH.TEN_NOI_PHAT_HANH)</b>
+                                    </div>
+                                    <div style="padding-left:5px;padding-top:10px">
+
+                                        @Html.DisplayFor(model => model.NOI_PHAT_HANH.TEN_NOI_PHAT_HANH)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div clas="col-md-6" style="padding-left:15px;padding-top:10px">
+                                        <b>@Html.DisplayNameFor(model => model.SO_VAN_BAN)</b>
+                                    </div>
+                                    <div style="padding-left:5px;padding-top:10px">
+
+                                        @Html.DisplayFor(model => model.SO_VAN_BAN)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div clas="col-md-6" style="padding-left:15px;padding-top:10px">
+                                        <b>@Html.DisplayNameFor(model => model.TRICH_YEU)</b>
+                                    </div>
+                                    <div style="padding-left:5px;padding-top:10px">
+
+                                        @Html.DisplayFor(model => model.TRICH_YEU)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div clas="col-md-6" style="padding-left:15px;padding-top:10px">
+                                        <b>@Html.DisplayNameFor(model => model.NGUOI_KY)</b>
+                                    </div>
+                                    <div style="padding-left:5px;padding-top:10px">
+
+                                        @Html.DisplayFor(model => model.NGUOI_KY)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div clas="col-md-6" style="padding-left:15px;padding-top:10px">
+                                        <b>@Html.DisplayNameFor(model => model.NGAY_KY)</b>
+                                    </div>
+                                    <div style="padding-left:5px;padding-top:10px">
+
+                                        @Html.DisplayFor(model => model.NGAY_KY)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div clas="col-md-6" style="padding-left:15px;padding-top:10px">
+                                        <b>@Html.DisplayNameFor(model => model.TRANG_THAI_XU_LY)</b>
+                                    </div>
+                                    <div style="padding-left:5px;padding-top:10px">
+
+                                        @Html.DisplayFor(model => model.TRANG_THAI_XU_LY)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div clas="col-md-6" style="padding-left:15px;padding-top:10px">
+                                        <b>@Html.DisplayNameFor(model => model.NGAY_GOI)</b>
+                                    </div>
+                                    <div style="padding-left:5px;padding-top:10px">
+
+                                        @Html.DisplayFor(model => model.NGAY_GOI)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div clas="col-md-6" style="padding-left:15px;padding-top:10px">
+                                        <b>@Html.DisplayNameFor(model => model.NGAY_NHAN)</b>
+                                    </div>
+                                    <div style="padding-left:5px;padding-top:10px">
+
+                                        @Html.DisplayFor(model => model.NGAY_NHAN)
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        @Html.ActionLink("Back to Search","Index", "ViewDetails", new { id = Model.ID_VAN_BAN })
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>

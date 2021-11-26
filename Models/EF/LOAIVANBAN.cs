@@ -1,4 +1,4 @@
-namespace Models.EF
+﻿namespace Models.EF
 {
     using System;
     using System.Collections.Generic;
@@ -17,19 +17,17 @@ namespace Models.EF
         }
 
         [Key]
-        [Required]
-        [DisplayName("ID:")]
+        [DisplayName("Loại văn bản:")]
         public decimal ID_LOAI_VAN_BAN { get; set; }
-       
 
         [Required]
         [StringLength(10)]
-        [DisplayName("Ma loai van ban:")]
+        [DisplayName("Loại văn bản:")]
         public string MA_LOAI_VAN_BAN { get; set; }
 
         [Required]
         [StringLength(50)]
-        [DisplayName("Ten loai van ban:")]
+        [DisplayName("Loại văn bản:")]
         public string TEN_LOAI_VAN_BAN { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

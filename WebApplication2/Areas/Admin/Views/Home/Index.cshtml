@@ -1,93 +1,152 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
-
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<section class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="content-header">
+    <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0">Starter Page</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Starter Page</li>
-                    </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-    <!-- Main content -->
-    <div class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">
-                                Some quick example text to build on the card title and make up the bulk of the card's
-                                content.
-                            </p>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
-                        </div>
-                    </div>
-                    <div class="card card-primary card-outline">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">
-                                Some quick example text to build on the card title and make up the bulk of the card's
-                                content.
-                            </p>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
-                        </div>
-                    </div><!-- /.card -->
+                <div class="col-sm-12">
+                    <h1 style="color:royalblue;text-align:center;padding-right:15px;
+                            display:block;font-family:'Times New Roman', Times, serif"></h1>
                 </div>
-                <!-- /.col-md-6 -->
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="m-0">Featured</h5>
-                        </div>
-                        <div class="card-body">
-                            <h6 class="card-title">Special title treatment</h6>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    <div class="card card-primary card-outline">
-                        <div class="card-header">
-                            <h5 class="m-0">Featured</h5>
-                        </div>
-                        <div class="card-body">
-                            <h6 class="card-title">Special title treatment</h6>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.col-md-6 -->
+
             </div>
-            <!-- /.row -->
         </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3 id="chuaxuly">4<sup style="font-size: 20px"></sup></h3>
+                        <p>Văn bản chưa xử lý</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a onclick="showVanBans('0','CHƯA XỬ LÝ')" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3 id="dangxuly">1</h3>
+                        <p>Văn bản đang xử lý</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person-add"></i>
+                    </div>
+                    <a onclick="showVanBans('1','ĐANG XỬ LÝ')" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3 id="daxuly">65</h3>
+                        <p>Văn bản đã xử lý</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-pie-graph"></i>
+                    </div>
+                    <a onclick="showVanBans('2','ĐÃ XỬ LÝ')" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+                <!-- ./col -->
+            </div>
+        </div>
     </div>
-    <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
-<!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-    <div class="p-3">
-        <h5>Title</h5>
-        <p>Sidebar content</p>
+    <div class="card-body">
+        <h3 id="cardshowvanban" class="text=center"></h3>
+        <table id="example2" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+
+                    <th width="105px">Số văn bản</th>
+                    <th width="130px">Nơi phát hành</th>
+                    <th width="120px">Loại văn bản</th>
+                    <th width="150px">Trích yếu</th>
+                    <th width="180px">Ngày ký</th>
+                    <th width="150px">Người ký</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="sheet"></tbody>
+        </table>
     </div>
-</aside>
+</section>
+<script src="~/wwwroot/js/jquery-3.4.1.min.js"></script>
+<script>
+    var j = jQuery.noConflict();
+    data = [];
+    j(document).ready(() => {
+        j.ajax(
+            {
+                url: '/Admin/Home/GetVanBan',
+                data: null,
+                'async': false,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                success: function (d) {
+                    console.log({ d });
+                    data = d;
+                    let chuaxuly = d.filter(x => x.TRANG_THAI_XU_LY == "0").length;
+                    let dangxuly = d.filter(x => x.TRANG_THAI_XU_LY == "1").length;
+                    let daxuly = d.filter(x => x.TRANG_THAI_XU_LY == "2").length;
+                    console.log({ chuaxuly })
+                    console.log({ dangxuly })
+                    console.log({ daxuly })
+                    document.getElementById('chuaxuly').innerText = chuaxuly;
+                    document.getElementById('dangxuly').innerText = dangxuly;
+                    document.getElementById('daxuly').innerText = daxuly;
+                }
+            });       
+    })
+        function showVanBans(n, s){
+            cardshowvanban.innerText = s;
+            showVanBan(data.filter(x => x.TRANG_THAI_XU_LY == n),n);
+        }
+        var showVanBan = (d,k) => {
+            let str = '';
+            for (var i = 0; i < d.length; i++) {
+                let date = new Date(parseInt(d[i].NGAY_KY.substring(6, 19)));
+                str += ` <tr>
+                        <td class="d-none">${d[i].ID_VAN_BAN}</td>
+                        <td>${d[i].SO_VAN_BAN}</td>
+                        <td>${d[i].noiphathanh}</td>
+                        <td>${d[i].loaivanban}</td>
+                        <td>${d[i].TRICH_YEU}</td>
+                        <td>${date.getDay()}/${date.getMonth() + 1}/${date.getFullYear()}</td>
+                        <td>${d[i].NGUOI_KY}</td>
+                        <td>
+                            <a class = "btn btn-outline-warning" href="/Admin/VanBan/ViewDetails/${d[i].ID_VAN_BAN}">Chi tiết</a>
+                           ${(k=="1"||k=='2')?'':`<a class = "btn btn-outline-success" href="/Admin/VanBan/edit/${d[i].ID_VAN_BAN}">Sửa</a>
+                            <input type="hidden" value="${d[i].FILE_DINH_KEM}"/>
+                            <a class="btn btn-danger" onclick="deleteVanBan(this)">Thu hồi</a>`}
+                        </td>
+                    </tr>`;
+            }
+            sheet.innerHTML = str;
+        }
+        var deleteVanBan = (e) => {
+            console.log(e)
+            let tr = e.parentNode.parentNode;
+            let filedinhkem = e.previousElementSibling.value;
+            if (confirm("Có muốn xóa hay không?")) {
+                j.post('/Admin/VanBan/DeleteVanBan', { idvanban: parseFloat(tr.cells[0].innerText), filedinhkem: filedinhkem }, (d) => {
+                    console.log({ d });
+                    j(tr).remove();
+                })
+            }
+            //ok men
+        }
+   
+</script>
